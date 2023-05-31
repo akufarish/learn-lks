@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(87, 86, 86);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        gap: 20px;
+      }
+
+      .card {
+        background-color: rgb(238, 236, 236);
+        padding: 2em 2em;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card h3 {
+        text-align: center;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 0.5em 4em;
+        border: none;
+        background-color: rgb(110, 193, 231);
+        color: white;
+      }
+
+      .disabled {
+        margin-top: 20px;
+        padding: 0.5em 4em;
+        border: none;
+        background-color: rgb(9, 143, 206);
+        color: white;
+      }
+
+      .game {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card" id="card">
+        <h3>Game instruction</h3>
+        <input type="text" name="name" id="name" value="" placeholder="nama" />
+        <button id="btn" class="btn" onclick="start()" disabled>Nama</button>
+      </div>
+      <div id="game" class="game">
+        <h1 id="timer"></h1>
+        <h3 id="nama"></h3>
+      </div>
+    </div>
+    <script>
+      let inputText = document.getElementById("name");
+      let nama = document.getElementById("nama");
+      let btn = document.getElementById("btn");
+      let instruction = document.getElementById("card");
+      let gameBoard = document.getElementById("game");
+      let timers = document.getElementById("timer");
+      let names;
+      window.addEventListener("keydown", (e) => {
+        if (inputText.value.length == "" || inputText.value.length == null) {
+          btn.disabled = true;
+          btn.classList.remove("disabled");
+        } else {
+          btn.disabled = false;
+          btn.classList.add("disabled");
+          names = inputText.value;
+        }
+      });
+
+      function countDown() {
+        let timer = 4;
+        let interval = setInterval(() => {
+          timer--;
+          timers.innerHTML = timer;
+
+          if (timer == 0) {
+            timer = 0;
+            timers.style.display = "none";
+            clearInterval(interval);
+          }
+        }, 1000);
+
+        setTimeout(() => {}, 3000);
+      }
+
+      function start() {
+        countDown();
+        gameBoard.style.display = "block";
+        nama.innerHTML = names;
+        instruction.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

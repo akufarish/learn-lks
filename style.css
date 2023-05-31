@@ -1,0 +1,36 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.board {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(23, 88, 145);
+}
+
+.board-2 {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(23, 145, 135);
+}
+
+.card {
+  margin-top: 60px;
+}
